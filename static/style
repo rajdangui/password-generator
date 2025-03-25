@@ -1,0 +1,82 @@
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+.container-sm {
+    max-width: 500px;
+    margin-top: 50px;
+    padding: 10px;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+h2 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.password-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#passwordField {
+    width: 75%;
+    font-size: 18px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.copy-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.copy-btn:hover {
+    background-color: #0056b3;
+}
+
+.progress {
+    height: 10px;
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 576px) {
+    .container-sm {
+        max-width: 90%;
+        margin-top: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .form-label {
+        font-size: 14px;
+    }
+
+    #passwordField {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .copy-btn {
+        width: 100%;
+    }
+}
