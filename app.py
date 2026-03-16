@@ -4,6 +4,11 @@ import string
 
 app = Flask(__name__)
 
+# Shared helper: build a random string from the given character set
+def _random_string(characters, length):
+    """Return a random string of `length` characters drawn from `characters`."""
+    return ''.join(random.choice(characters) for _ in range(length))
+
 # Function to generate a password
 def generate_password(length, use_numbers, use_special):
     characters = string.ascii_letters
@@ -11,12 +16,11 @@ def generate_password(length, use_numbers, use_special):
         characters += string.digits
     if use_special:
         characters += string.punctuation
-    
-    return ''.join(random.choice(characters) for _ in range(length))
+    return _random_string(characters, length)
 
 # Function to generate a PIN (only numbers)
 def generate_pin(length):
-    return ''.join(random.choice(string.digits) for _ in range(length))
+    return _random_string(string.digits, length)
 
 @app.route("/")
 def home():
