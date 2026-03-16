@@ -104,6 +104,13 @@
         });
     }
 
+    const STRENGTH_LEVELS = [
+        { width: "25%", cls: "progress-bar bg-danger",  text: "Weak 🔴" },
+        { width: "50%", cls: "progress-bar bg-warning", text: "Moderate 🟡" },
+        { width: "75%", cls: "progress-bar bg-info",    text: "Strong 🔵" },
+        { width: "100%", cls: "progress-bar bg-success", text: "Very Strong ✅" },
+    ];
+
     function checkStrength(password) {
         let strengthBar = document.getElementById("strengthBar");
         let strengthText = document.getElementById("strengthText");
@@ -114,27 +121,11 @@
         if (password.match(/[0-9]/)) strength++;
         if (password.match(/[^a-zA-Z0-9]/)) strength++;
 
-        switch (strength) {
-            case 1:
-                strengthBar.style.width = "25%";
-                strengthBar.className = "progress-bar bg-danger";
-                strengthText.innerText = "Weak 🔴";
-                break;
-            case 2:
-                strengthBar.style.width = "50%";
-                strengthBar.className = "progress-bar bg-warning";
-                strengthText.innerText = "Moderate 🟡";
-                break;
-            case 3:
-                strengthBar.style.width = "75%";
-                strengthBar.className = "progress-bar bg-info";
-                strengthText.innerText = "Strong 🔵";
-                break;
-            case 4:
-                strengthBar.style.width = "100%";
-                strengthBar.className = "progress-bar bg-success";
-                strengthText.innerText = "Very Strong ✅";
-                break;
+        if (strength > 0) {
+            const level = STRENGTH_LEVELS[strength - 1];
+            strengthBar.style.width = level.width;
+            strengthBar.className = level.cls;
+            strengthText.innerText = level.text;
         }
     }
 
