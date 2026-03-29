@@ -1,12 +1,68 @@
 body {
     background-color: #f4f4f4;
     font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .card {
+    background: #2d2d2d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #3d3d3d;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode #passwordField {
+    background-color: #3d3d3d;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    background: none;
+    border: none;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
 }
 
 .container-sm {
     max-width: 500px;
     margin-top: 50px;
     padding: 10px;
+    position: relative;
 }
 
 .card {
@@ -14,6 +70,11 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background: white;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 h2 {
@@ -46,14 +107,21 @@ h2 {
     border-radius: 5px;
     font-size: 14px;
     margin-top: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .copy-btn:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
 }
 
 .progress {
     height: 10px;
+    transition: all 0.3s ease;
 }
 
 /* 📱 Mobile Optimization */
@@ -78,5 +146,11 @@ h2 {
 
     .copy-btn {
         width: 100%;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
     }
 }
