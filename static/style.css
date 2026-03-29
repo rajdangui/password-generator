@@ -1,0 +1,211 @@
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .card {
+    background: #2d2d2d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #3d3d3d;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode #passwordField {
+    background-color: #3d3d3d;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode .input-group-text {
+    background-color: #3d3d3d;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode .form-range {
+    background-color: transparent;
+}
+
+body.dark-mode .form-check-label {
+    color: #e0e0e0;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    background: none;
+    border: none;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+.container-sm {
+    max-width: 500px;
+    margin-top: 50px;
+    padding: 10px;
+    position: relative;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: white;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.password-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#passwordField {
+    width: 75%;
+    font-size: 18px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.copy-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.copy-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+.progress {
+    height: 10px;
+    transition: all 0.3s ease;
+}
+
+.history-box {
+    margin-top: 20px;
+}
+
+.history-password {
+    font-size: 14px;
+    word-break: break-all;
+}
+
+body.dark-mode .list-group-item {
+    background-color: #3d3d3d;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode .btn-outline-primary {
+    color: #6ea8fe;
+    border-color: #6ea8fe;
+}
+
+body.dark-mode .btn-outline-primary:hover {
+    background-color: #6ea8fe;
+    color: #000;
+}
+
+body.dark-mode .btn-outline-danger {
+    color: #ea868f;
+    border-color: #ea868f;
+}
+
+body.dark-mode .btn-outline-danger:hover {
+    background-color: #ea868f;
+    color: #000;
+}
+
+body.dark-mode .alert-info {
+    background-color: #1f4a5c;
+    color: #a9d7e8;
+    border-color: #2c6280;
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 576px) {
+    .container-sm {
+        max-width: 90%;
+        margin-top: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .form-label {
+        font-size: 14px;
+    }
+
+    #passwordField {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .copy-btn {
+        width: 100%;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+    }
+}

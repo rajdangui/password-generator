@@ -1,21 +1,27 @@
 from flask import Flask, render_template, request, jsonify
-import random
+import secrets
 import string
 
 app = Flask(__name__)
 
-# Shared helper: build a random string from the given character set
+# Shared helper: build a cryptographically secure random string from the given character set
 def _random_string(characters, length):
-    """Return a random string of `length` characters drawn from `characters`."""
-    return ''.join(random.choice(characters) for _ in range(length))
+    """Return a cryptographically secure random string of `length` characters drawn from `characters`."""
+    return ''.join(secrets.choice(characters) for _ in range(length))
 
 # Function to generate a password
-def generate_password(length, use_numbers, use_special):
+def generate_password(length, use_numbers, use_special, exclude_ambiguous=False):
     characters = string.ascii_letters
     if use_numbers:
         characters += string.digits
     if use_special:
         characters += string.punctuation
+
+    # Exclude ambiguous characters if requested
+    if exclude_ambiguous:
+        ambiguous = 'il1Lo0O'
+        characters = ''.join(c for c in characters if c not in ambiguous)
+
     return _random_string(characters, length)
 
 # Function to generate a PIN (only numbers)
@@ -43,11 +49,12 @@ def generate():
     if generate_type == "password":
         use_numbers = data.get("numbers")
         use_special = data.get("special")
+        exclude_ambiguous = data.get("exclude_ambiguous", False)
 
         if not use_numbers and not use_special:
             return jsonify({"error": "At least one option (Numbers or Special Characters) must be selected for passwords"}), 400
 
-        generated_value = generate_password(length, use_numbers, use_special)
+        generated_value = generate_password(length, use_numbers, use_special, exclude_ambiguous)
     else:
         generated_value = generate_pin(length)
 
