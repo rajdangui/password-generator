@@ -27,6 +27,20 @@ body.dark-mode #passwordField {
     border-color: #555;
 }
 
+body.dark-mode .input-group-text {
+    background-color: #3d3d3d;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode .form-range {
+    background-color: transparent;
+}
+
+body.dark-mode .form-check-label {
+    color: #e0e0e0;
+}
+
 .theme-toggle {
     position: absolute;
     top: 20px;
@@ -157,6 +171,12 @@ body.dark-mode .btn-outline-danger {
 body.dark-mode .btn-outline-danger:hover {
     background-color: #ea868f;
     color: #000;
+}
+
+body.dark-mode .alert-info {
+    background-color: #1f4a5c;
+    color: #a9d7e8;
+    border-color: #2c6280;
 }
 
 /* 📱 Mobile Optimization */

@@ -24,7 +24,11 @@
             </select>
 
             <label class="form-label">Length:</label>
-            <input type="number" class="form-control mb-3" name="length" id="length" min="4" max="32" value="12" required>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" name="length" id="length" min="4" max="32" value="12" required>
+                <span class="input-group-text" id="lengthValue">12</span>
+            </div>
+            <input type="range" class="form-range" id="lengthSlider" min="4" max="32" value="12" oninput="updateLength()">
 
             <div id="password_options">
                 <div class="form-check">
@@ -69,14 +73,50 @@
             <ul id="historyList" class="list-group"></ul>
             <button type="button" class="btn btn-sm btn-outline-danger mt-2" onclick="clearHistory()">Clear History</button>
         </div>
+
+        <div class="info-box mt-4">
+            <div class="alert alert-info">
+                <strong>💡 Tips:</strong>
+                <ul class="mb-0">
+                    <li>Use at least 12 characters for strong passwords</li>
+                    <li>Enable all options (numbers + special chars) for maximum security</li>
+                    <li>Exclude ambiguous characters if typing manually</li>
+                    <li>Generated passwords use cryptographically secure randomness</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- JavaScript inside HTML -->
 <script>
+    function updateLength() {
+        let slider = document.getElementById("lengthSlider");
+        let input = document.getElementById("length");
+        let display = document.getElementById("lengthValue");
+        input.value = slider.value;
+        display.textContent = slider.value;
+    }
+
     function toggleOptions() {
         let type = document.getElementById("generate_type").value;
         document.getElementById("password_options").style.display = (type === "password") ? "block" : "none";
+
+        // Update max length for PIN
+        let lengthInput = document.getElementById("length");
+        let lengthSlider = document.getElementById("lengthSlider");
+        if (type === "pin") {
+            lengthInput.max = 10;
+            lengthSlider.max = 10;
+            if (parseInt(lengthInput.value) > 10) {
+                lengthInput.value = 10;
+                lengthSlider.value = 10;
+                updateLength();
+            }
+        } else {
+            lengthInput.max = 32;
+            lengthSlider.max = 32;
+        }
     }
 
     function generatePassword() {
