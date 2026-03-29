@@ -124,6 +124,41 @@ h2 {
     transition: all 0.3s ease;
 }
 
+.history-box {
+    margin-top: 20px;
+}
+
+.history-password {
+    font-size: 14px;
+    word-break: break-all;
+}
+
+body.dark-mode .list-group-item {
+    background-color: #3d3d3d;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode .btn-outline-primary {
+    color: #6ea8fe;
+    border-color: #6ea8fe;
+}
+
+body.dark-mode .btn-outline-primary:hover {
+    background-color: #6ea8fe;
+    color: #000;
+}
+
+body.dark-mode .btn-outline-danger {
+    color: #ea868f;
+    border-color: #ea868f;
+}
+
+body.dark-mode .btn-outline-danger:hover {
+    background-color: #ea868f;
+    color: #000;
+}
+
 /* 📱 Mobile Optimization */
 @media (max-width: 576px) {
     .container-sm {
